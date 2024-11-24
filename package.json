@@ -1,0 +1,26 @@
+{
+  "description": "Custom ESLint plugin",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha 'rules/**/*.test.js'"
+  },
+  "keywords": [
+    "eslint",
+    "plugin",
+    "custom"
+  ],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "eslint": "^9.10.0",
+    "eslint-plugin-prettier": "^5.2.1",
+    "prettier": "^3.3.3"
+  },
+  "devDependencies": {
+    "@typescript-eslint/parser": "^8.5.0",
+    "@typescript-eslint/rule-tester": "^8.7.0",
+    "@typescript-eslint/utils": "^8.5.0",
+    "mocha": "^10.7.3",
+    "typescript": "5.5.3"
+  }
+}
