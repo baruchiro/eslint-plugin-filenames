@@ -1,6 +1,8 @@
 const { ESLintUtils } = require("@typescript-eslint/utils");
+const { createRule } = require("./rule");
 
-module.exports = {
+module.exports = createRule({
+  name: "enforce-prop-decorator-enum",
   meta: {
     type: "problem",
     docs: {
@@ -155,4 +157,4 @@ module.exports = {
       },
     };
   },
-};
+});

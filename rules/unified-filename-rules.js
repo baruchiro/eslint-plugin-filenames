@@ -1,31 +1,33 @@
-const path = require('path');
+const path = require("path");
+const { createRule } = require("./rule");
 
-const constsFileNames = ['.const.ts', '.consts.ts', '.constants.ts'];
+const constsFileNames = [".const.ts", ".consts.ts", ".constants.ts"];
 
 const notAllowedStylesFileNames = [
-  'styles.ts',
-  'styles.tsx',
-  'style.ts',
-  'style.tsx',
+  "styles.ts",
+  "styles.tsx",
+  "style.ts",
+  "style.tsx",
 ];
 
-module.exports = {
+module.exports = createRule({
+  name: "unified-filename-rules",
   meta: {
-    type: 'problem',
+    type: "problem",
     docs: {
       description:
-        'Unified rule for enforcing specific naming conventions for various file types',
-      category: 'Best Practices',
+        "Unified rule for enforcing specific naming conventions for various file types",
+      category: "Best Practices",
       recommended: false,
     },
     messages: {
       noActionFilename:
-        'This name shows a `redux` icon using atom material icons due to convention with ...`Action`.',
-      constsFilename: 'No need for prefix of the component name imo',
+        "This name shows a `redux` icon using atom material icons due to convention with ...`Action`.",
+      constsFilename: "No need for prefix of the component name imo",
       typesFilename:
-        'To save time, you don’t need to name the file like this, just types.ts',
+        "To save time, you don’t need to name the file like this, just types.ts",
       stylesFilename:
-        'file name is not styles.ts. by convention Componentname.styles.ts.',
+        "file name is not styles.ts. by convention Componentname.styles.ts.",
     },
     schema: [], // no options
   },
@@ -33,23 +35,23 @@ module.exports = {
     const filename = context.getFilename();
     const basename = path.basename(filename);
 
-    if (filename.endsWith('Action.tsx')) {
+    if (filename.endsWith("Action.tsx")) {
       context.report({
-        messageId: 'noActionFilename',
+        messageId: "noActionFilename",
         loc: { line: 1, column: 0 },
       });
     }
 
     if (constsFileNames.some((name) => basename.endsWith(name))) {
       context.report({
-        messageId: 'constsFilename',
+        messageId: "constsFilename",
         loc: { line: 1, column: 0 },
       });
     }
 
-    if (basename.endsWith('.types.ts')) {
+    if (basename.endsWith(".types.ts")) {
       context.report({
-        messageId: 'typesFilename',
+        messageId: "typesFilename",
         loc: { line: 1, column: 0 },
       });
     }
@@ -58,18 +60,18 @@ module.exports = {
       notAllowedStylesFileNames.some((name) => basename.toLowerCase() === name)
     ) {
       context.report({
-        messageId: 'stylesFilename',
+        messageId: "stylesFilename",
         loc: { line: 1, column: 0 },
       });
     }
 
-    if (basename.endsWith('.styles.ts') && !basename.match(/^[A-Z]/)) {
+    if (basename.endsWith(".styles.ts") && !basename.match(/^[A-Z]/)) {
       context.report({
-        messageId: 'stylesFilename',
+        messageId: "stylesFilename",
         loc: { line: 1, column: 0 },
       });
     }
 
     return {};
   },
-};
+});
