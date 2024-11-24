@@ -1,18 +1,20 @@
 const path = require("path");
 const { RuleTester } = require("@typescript-eslint/rule-tester");
-const parser = require("@typescript-eslint/parser");
+// const parser = require("@typescript-eslint/parser");
 const mocha = require("mocha");
 
 RuleTester.afterAll = mocha.after;
 
 const ruleTester = new RuleTester({
   languageOptions: {
-    parser,
+    // parser,
     parserOptions: {
       ecmaFeatures: {
         jsx: true,
       },
-      project: path.resolve(__dirname, "./tsconfig.json"),
+      projectService: {
+        allowDefaultProject: ["*.ts*"],
+      },
       tsconfigRootDir: __dirname,
     },
   },
