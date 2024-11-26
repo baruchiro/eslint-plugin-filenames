@@ -22,7 +22,7 @@ const run = (...args) => {
         projectService: {
           allowDefaultProject: ["*.ts*", "*.js*"],
         },
-        tsconfigRootDir: __dirname,
+        tsconfigRootDir: fixturesDir,
       },
     },
   });
