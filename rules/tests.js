@@ -19,9 +19,7 @@ const run = (...args) => {
         ecmaFeatures: {
           jsx: true,
         },
-        projectService: {
-          allowDefaultProject: ["*.ts*", "*.js*"],
-        },
+        project: "./tsconfig.json",
         tsconfigRootDir: fixturesDir,
       },
     },
@@ -39,7 +37,7 @@ const useFilename = (filename) => {
   }
 
   return {
-    filename: filePath,
+    filename, //: filePath,
     before: () => fs.writeFileSync(filePath, ""),
     after: () => () => {
       if (fs.existsSync(filePath)) {

@@ -12,6 +12,7 @@ const notAllowedStylesFileNames = [
 
 module.exports = createRule({
   name: "unified-filename-rules",
+  defaultOptions: [],
   meta: {
     type: "problem",
     docs: {

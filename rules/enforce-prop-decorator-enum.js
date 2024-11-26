@@ -3,6 +3,7 @@ const { createRule } = require("./rule");
 
 module.exports = createRule({
   name: "enforce-prop-decorator-enum",
+  defaultOptions: [],
   meta: {
     type: "problem",
     docs: {
