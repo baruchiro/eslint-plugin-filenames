@@ -13,7 +13,7 @@ const ruleTester = new RuleTester({
         jsx: true,
       },
       projectService: {
-        allowDefaultProject: ["*.ts*"],
+          allowDefaultProject: ["*.ts*", "*.js*"],
       },
       tsconfigRootDir: __dirname,
     },
